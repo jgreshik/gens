@@ -24,7 +24,7 @@ class Mandelbrot{
 
     }
     //get the value for each point
-    void renderbuddhabrot(int count,int points){
+    void buddhabrot(int count,int points){
         Random random=new Random();
         for(int p=0;p<points;++p){ 
             double x=(right-left)*random.nextDouble()+left;
