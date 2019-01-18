@@ -48,13 +48,13 @@ class Mandelbrot{
     }
 
     //get the value for each point
-    void buddhabrot(int count,int points){
+    void buddhabrot(int count,long points){
         Random random=new Random();
-        for(int p=0;p<points;++p){ 
+        for(long p=0;p<points;++p){ 
             double x=(right-left)*random.nextDouble()+left;
             double y=(up-down)*random.nextDouble()+right;
             HashSet<Complex>set=new HashSet<>();
-            int c=0;
+            long c=0;
             Complex a=new Complex(x,y);
             Complex z=new Complex(0,0);
             while(c<count&&z.abs()<2){
