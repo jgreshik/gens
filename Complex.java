@@ -14,4 +14,7 @@ class Complex{
     Complex multiply(Complex a){
         return new Complex(r*a.r-i*a.i,r*a.i+i*a.r);
     }
+    double abs(){
+        return Math.sqrt(r*r+i*i);
+    }
 }

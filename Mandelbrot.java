@@ -56,7 +56,7 @@ class Mandelbrot{
             HashSet<Complex>set=new HashSet<>();
             int c=0;
             Complex a=new Complex(x,y);
-            Copmlex z=new Complex(0,0);
+            Complex z=new Complex(0,0);
             while(c<count&&z.abs()<2){
                 set.add(z);
                 z=z.multiply(z).add(a);
@@ -64,8 +64,8 @@ class Mandelbrot{
             }
             if(c>=count)continue;
             for(Complex n:set){
-                int i=(int)maptorange(left,right,0,i,n.r);
-                int j=(int)maptorange(down,up,0,j,n.i);
+                int i=(int)maptorange(left,right,0,width,n.r);
+                int j=(int)maptorange(down,up,0,height,n.i);
                 values[i][j]=values[i][j]+1;
             }
         }    

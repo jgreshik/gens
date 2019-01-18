@@ -24,7 +24,7 @@ class Image{
             }
         }
     }
-    void histogramcolor(double[][]values){
+    void histogramcolorbw(double[][]values){
         TreeMap<Integer,Integer>map=new TreeMap<>();
         for(int i=0;i<width;++i){
             for(int j=0;j<height;++j){
@@ -34,17 +34,20 @@ class Image{
             }
         }
         int sum=0;
+        int max=0;
+        //get percentile of the iteration value
         for(int key:map.keySet()){
             int curr=map.get(key);
-            map.put(key,curr+sum);
+            map.put(key,sum);
+            max=Math.max(sum,max);
             sum+=curr;
         }
         for(int i=0;i<width;++i){
             for(int j=0;j<height;++j){
                 int key=(int)values[i][j];
-                red[i][j]=(int)(map.get(key)/sum*256);
-                green[i][j]=(int)(map.get(key)/sum*256);
-                blue[i][j]=(int)(map.get(key)/sum*256);
+                red[i][j]=(int)((double)map.get(key)/max*255);
+                green[i][j]=(int)((double)map.get(key)/max*255);
+                blue[i][j]=(int)((double)map.get(key)/max*255);
             }
         }
         color();
