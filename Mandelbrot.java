@@ -38,7 +38,7 @@ class Mandelbrot{
         }
         return count;
     }
-    void renderescapetime(int iterations){
+    void escapetime(int iterations){
         int i,j;
         for(i=0;i<width;i++){
             for(j=0;j<height;j++){

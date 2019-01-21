@@ -1,1 +1,5 @@
-Teaching my friend Joey some stuff about fractal rendering and generative art.
+Supports rendering the Mandelbrot set in the standard escape time way and the Buddhabrot way.
+
+Run with: 
+javac *.java
+java Renderer
