@@ -17,4 +17,7 @@ class Complex{
     double abs(){
         return Math.sqrt(r*r+i*i);
     }
+		double arg(){
+				return Math.atan2(i,r);
+		}
 }

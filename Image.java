@@ -3,7 +3,7 @@ import java.io.*;
 import javax.imageio.ImageIO;
 import java.util.*;
 class Image{
-    int width;
+		int width;
     int height;
     BufferedImage image;
     int[][]red;
@@ -17,6 +17,68 @@ class Image{
         green=new int[W][H];
         blue=new int[W][H];
     }
+		Image(String filename)throws Throwable{
+			image=ImageIO.read(new File(filename));
+			width=image.getWidth();
+			height=image.getHeight();
+			red=new int[width][height];
+			green=new int[width][height];
+			blue=new int[width][height];
+			for(int i=0;i<width;++i){
+				for(int j=0;j<height;++j){
+					int color=image.getRGB(i,j);
+					red[i][j]=(color&0x000FF0000)>>16;
+					green[i][j]=(color&0x0000FF00)>>8;
+					blue[i][j]=color&0x000000FF;
+				}
+			}
+		}
+		void complement(){
+			for(int i=0;i<width;++i){
+				for(int j=0;j<height;++j){
+					red[i][j]=255-red[i][j];
+					green[i][j]=255-green[i][j];
+					blue[i][j]=255-blue[i][j];	
+				}
+			}
+		}
+		void bw(){
+			for(int i=0;i<width;++i){
+				for(int j=0;j<height;++j){
+					int avg=(red[i][j]+green[i][j]+blue[i][j])/3;
+					red[i][j]=avg;
+					green[i][j]=avg;
+					blue[i][j]=avg;
+				}
+			}
+		}
+		void rbg(){
+			int[][]temp=blue;
+			blue=green;
+			green=temp;
+		}
+		void grb(){
+			int[][]temp=red;
+			red=green;
+			green=temp;
+		}
+		void gbr(){
+			int[][]temp=red;
+			red=green;
+			green=blue;
+			blue=temp;	
+		}
+		void brg(){
+			int[][]temp=blue;
+			blue=green;
+			green=red;
+			red=temp;
+		}
+		void bgr(){
+			int[][]temp=blue;
+			blue=red;
+			red=temp;	
+		}
     void color(){
         for(int i=0;i<width;++i){
             for(int j=0;j<height;++j){
