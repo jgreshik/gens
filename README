@@ -1,4 +1,5 @@
 Supports rendering the Mandelbrot set in the standard escape time way and the Buddhabrot way.
+Supports rendering Rorschach-like images with bilateral symmetry
 
 Run with: 
 javac *.java
